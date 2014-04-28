@@ -10,7 +10,9 @@ this directory and run `static`.
 ## Slides
 
 The slides are written as a markdown document and can be here:
+https://github.com/JoelQ/vim-grammar/blob/master/presentation.md
 
 ## Cheatsheet
 
-A cheatsheet of common commands, motions, and text objects can be found here: 
+A cheatsheet of common commands, motions, and text objects can be found here:
+https://github.com/JoelQ/vim-grammar/blob/master/cheat_sheet.md
