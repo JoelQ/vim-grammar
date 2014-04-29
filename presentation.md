@@ -1,16 +1,20 @@
-# Vim Grammar: Commands, Motions and Text Objects
+# Vim Grammar
+
+Commands, Motions and Text Objects
 
 ---
 
 # Cryptic Commands
 
-`^c8awThis `
+`cit<td>Value</td><ESC>llci</tr<ESC>^ci<tr`
 
-> However, due to unknown causes, this would ...
-> This would ...
+* Before: `<li>Value</li>`
+* After: `<tr><td>Value</td></tr>`
 
 
 ## ???
+
+![confused cat](images/confused.jpg)
 
 
 ## Vim has grammar, just like English
@@ -29,8 +33,9 @@
 
 `dw` (delete word)
 
+---
 
-## Motions
+# Motions
 
 Move your cursor
 
@@ -42,21 +47,36 @@ Move your cursor
 * `$` end of line (think regex)
 
 
+## Words
+
+* `w` move forward one word
+* `b` move to beginning of word
+* `e` move to end of word
+
+
+## Visual mode
+
+Slow, can be a crutch
+
+---
+
 ## Common Vim commands
 
 * `d` Delete (also cut)
 * `c` Change
 * `y` Yank (copy)
+* `=` Auto-indent
+* `<`/`>` Indent left/right
 
 
-## Double commands automatically run on the current line
+## Double commands
 
 * `dd` Delete the current line
 * `cc` Change current line
 * `yy` Yank current line
 
 
-## Combining commands and motions
+## Combos
 
 * `d$` Delete till the end of the line
 * `c^` Change till the beginning of the line
@@ -93,19 +113,16 @@ Move your cursor
 
 ## Representing text concepts
 
-* `w` word
-* `s` sentence
-* `p` paragraph
-* `tag`
-
-
-## Two ways to refer to a text object
-
-* `i<text object>` inner text object, without surrounding whitespace
-* `a<text object>` around text object, including surrounding whitespace
+* `iw`/`aw` inner/around word
+* `is`/`as` inner/around sentence
+* `ip`/`ap` inner/around paragraph
+* `it`/`at` inner/around tag
 
 
 ## Text objects can't be used by themselves
+
+
+## Text objects don't require your cursor to be at the beginning
 
 
 ## Combining with commands and modifiers
@@ -123,11 +140,72 @@ Move your cursor
 `ci(` change inner parenthesis
 `ci"` change inner double quotes
 
+---
 
 ## Back to our original problem
 
-* `c8aw` delete 8 words and surrounding whitespace and drop into insert mode
-* `This ` type the word "This "
+`cit<td>Value</td><ESC>llci</tr<ESC>^ci<tr`
+
+* Before: `<li>Value</li>`
+* After: `<tr><td>Value</td></tr>`
+
+
+## Adding `<td>`
+
+`cit<td>Value</td><ESC>`
+
+Change contents of tag to `<td>Value</td>`, return to normal mode
+
+
+## Changes
+
+* Before: `<li>Value</li>`
+* After: `<li><td>Value</td></li>`
+
+
+## Closing `<li>`
+
+`llci</tr<ESC>`
+
+Move right two characters, change the contents of the angle brackets to `/tr`,
+return to normal mode
+
+
+## Changes
+
+* Before: `<li><td>Value</td></li>`
+* After: `<li><td>Value</td></tr>`
+
+
+## Opening `<li>`
+
+`^ci<tr`
+
+Move to the beginning of the line, change to contents of the angle brackets to
+`tr`
+
+
+## Changes
+
+* Before: `<li><td>Value</td></tr>`
+* After: `<tr><td>Value</td></tr>`
+
+---
+
+# Extending your vocabulary
+
+Adding more verbs and nouns
+
+
+## Commands
+
+* `tpope/vime-commentary` comments out the given text object
+
+
+## Text objects
+
+* `nelstrom/vim-textobj-rubyblock` ruby blocks
+* `michaeljsmith/vim-indent-object` indentation level
 
 ---
 
@@ -135,3 +213,5 @@ Move your cursor
 
 * Github: @JoelQ
 * Twitter: @joelquen
+* Slides: https://github.com/JoelQ/vim-grammar
+* Cheat sheet: https://github.com/JoelQ/vim-grammar/blob/master/cheat_sheet.md
