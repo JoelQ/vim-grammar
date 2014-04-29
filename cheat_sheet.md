@@ -18,7 +18,8 @@
 
 ## Text objects
 
-* `w` word
-* `s` sentence
-* `p` paragraph
-* `t` tag
+* `iw`/`aw` inner/around word
+* `is`/`as` inner/around sentence
+* `ip`/`ap` inner/around paragraph
+* `it`/`at` inner/around tag
+* `i<delimiter>`/`a<delimiter>` inner/around delimiter (`(`, `"`, `[`, etc)
